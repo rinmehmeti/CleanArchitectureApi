@@ -40,7 +40,6 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
             .NotEmpty()
             .EmailAddress()
             .MustAsync(BeUniqueEmail)
-                .WithName("Authentication")
                 .WithMessage("There is an existing account with same email.");
 
         RuleFor(v => v.Password)

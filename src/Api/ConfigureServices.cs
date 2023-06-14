@@ -1,5 +1,7 @@
-﻿using Api.Services;
+﻿using Api.Filters;
+using Api.Services;
 using Application.Common.Interfaces;
+using FluentValidation.AspNetCore;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using NSwag;
@@ -19,7 +21,9 @@ public static class ConfigureServices
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
 
-        services.AddControllersWithViews();
+        services.AddControllersWithViews(options =>
+    options.Filters.Add<ApiExceptionFilterAttribute>())
+        .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
 
         services.AddRazorPages();
 
