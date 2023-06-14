@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Rinor Mehmeti",
+  "classifications": [
+    "ASP.NET",
+    "Clean Architecture Api"
+  ],
+  "name": "Clean Architecture Solution",
+  "description": "This is a test.",
+  "identity": "Clean.Architecture.Api",
+  "groupIdentity": "Clean.Architecture.Api",
+  "shortName": "ca-api",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "CleanArchitectureApi",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "README.md",
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        ".template.config/**/*",
+        ".vs/**/*",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        "**/.git/**",
+        "*.nuspec"
+      ]
+    }
+  ]
+}
