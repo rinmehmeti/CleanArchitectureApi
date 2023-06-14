@@ -8,7 +8,7 @@ Goal of the template is to provide a simplified version of the original Clean Ar
 Click **Use this template** above or install the **.NET template**.
 
 Changes from the original template:
-- Template includes only the backend API - thde default Angular frontend has been removed so you can use any client of your choice.
+- Template includes only the backend API - the default Angular frontend has been removed so you can use any client of your choice.
 - IdentityServer has been replaced with a simple JWT token auth.
 - Supporting classes such as Validators, EventHandlers have been moved in the same file with the relevant command/query. This makes it easier to navigate through specific features of the system since you don't have to open multiple files to find out what's going on. The only bits that have't moved are the domain layer entities.
 - IdentityService class has been expanded and now has extra authorization methods.
