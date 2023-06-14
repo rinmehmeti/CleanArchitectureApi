@@ -1,17 +1,14 @@
 ﻿using Application.Common.Interfaces;
 using Infrastructure.Persistence;
-using Api.Filters;
 using Api.Services;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.Options;
-using System.Reflection;
+using NSwag.Generation.Processors.Security;
+using NSwag;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
 {
-    public static IServiceCollection AddWebUIServices(this IServiceCollection services)
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -22,9 +19,7 @@ public static class ConfigureServices
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
 
-        services.AddControllersWithViews(options =>
-            options.Filters.Add<ApiExceptionFilterAttribute>())
-                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+        services.AddControllersWithViews();
 
         services.AddRazorPages();
 
@@ -32,35 +27,18 @@ public static class ConfigureServices
         services.Configure<ApiBehaviorOptions>(options =>
             options.SuppressModelStateInvalidFilter = true);
 
-        services.AddSwaggerGen(c =>
+        services.AddOpenApiDocument((configure, serviceProvider) =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Clean Architecture API", Version = "v1" });
-
-            c.AddSecurityDefinition("JWT", new OpenApiSecurityScheme
+            configure.Title = "CleanArchitecture API";
+            configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
             {
-                Type = SecuritySchemeType.ApiKey,
+                Type = OpenApiSecuritySchemeType.ApiKey,
                 Name = "Authorization",
-                In = ParameterLocation.Header,
+                In = OpenApiSecurityApiKeyLocation.Header,
                 Description = "Type into the textbox: Bearer {your JWT token}."
             });
 
-            c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "JWT"
-                        }
-                    },
-                    new string[] {}
-                }
-            });
-
-            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
         });
 
         return services;

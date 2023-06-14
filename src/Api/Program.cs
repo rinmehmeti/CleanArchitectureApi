@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddWebUIServices();
+builder.Services.AddApiServices();
 
 var app = builder.Build();
 
@@ -23,12 +23,8 @@ if (app.Environment.IsDevelopment())
         await initialiser.SeedAsync();
     }
 
-    app.UseSwagger();
-
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Clean Architecture API");
-    });
+    app.UseOpenApi();
+    app.UseSwaggerUi3();
 
     app.Use(async (context, next) =>
     {
