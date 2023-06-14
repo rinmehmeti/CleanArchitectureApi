@@ -1,12 +1,16 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Mappings;
 using Application.Common.Security;
+using Application.TodoLists.Queries.ExportTodos;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.TodoLists.Queries.GetTodos;
+
 [Authorize]
 public record GetTodosQuery : IRequest<TodosVm>;
 
@@ -37,4 +41,31 @@ public class GetTodosQueryHandler : IRequestHandler<GetTodosQuery, TodosVm>
                 .ToListAsync(cancellationToken)
         };
     }
+}
+
+public class PriorityLevelDto
+{
+    public int Value { get; set; }
+    public string Name { get; set; }
+}
+
+public class TodoItemDto : IMapFrom<TodoItem>
+{
+    public int Id { get; set; }
+    public int ListId { get; set; }
+    public string Title { get; set; }
+    public bool Done { get; set; }
+    public int Priority { get; set; }
+    public string Note { get; set; }
+    public void Mapping(Profile profile)
+    {
+        profile.CreateMap<TodoItem, TodoItemDto>()
+            .ForMember(d => d.Priority, opt => opt.MapFrom(s => (int)s.Priority));
+    }
+}
+
+public class TodosVm
+{
+    public IList<PriorityLevelDto> PriorityLevels { get; set; } = new List<PriorityLevelDto>();
+    public IList<TodoListDto> Lists { get; set; } = new List<TodoListDto>();
 }
