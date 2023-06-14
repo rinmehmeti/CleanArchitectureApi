@@ -12,10 +12,11 @@ Changes from the original template:
 - IdentityServer has been replaced with a simple JWT token auth.
 - Supporting classes such as Validators, EventHandlers have been moved in the same file with the relevant command/query. This makes it easier to navigate through specific features of the system since you don't have to open multiple files to find out what's going on. The only bits that have't moved are the domain layer entities.
 - IdentityService class has been expanded and now has extra authorization methods.
+- CurrentUserService class has been expanded to include current authenticated user's email and roles.
 
 ## Getting Started
 
-Get started by installing the [.NET template](https://www.nuget.org/packages/Clean.Architecture.Solution.Template) and run `dotnet new ca-api`:
+Get started by installing the [.NET template](https://www.nuget.org/packages/Clean.Architecture.Api) and run `dotnet new ca-api`:
 
 1. Install the latest [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 2. Run `dotnet new install Clean.Architecture.Api` to install the .NET template
