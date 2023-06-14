@@ -1,6 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Common.Models;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Application.Common.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Common.Mappings;

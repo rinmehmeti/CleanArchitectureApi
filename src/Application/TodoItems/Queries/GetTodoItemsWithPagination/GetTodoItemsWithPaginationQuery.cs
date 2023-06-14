@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using System.ComponentModel.DataAnnotations;
 using Application.Common.Interfaces;
 using Application.Common.Mappings;
 using Application.Common.Models;
-using MediatR;
-using FluentValidation;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Domain.Entities;
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
+using MediatR;
 
 namespace Application.TodoItems.Queries.GetTodoItemsWithPagination;
 public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>

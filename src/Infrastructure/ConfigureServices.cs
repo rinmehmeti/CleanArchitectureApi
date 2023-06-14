@@ -1,4 +1,6 @@
-﻿using Application.Common.Interfaces;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Application.Common.Interfaces;
 using Infrastructure.Files;
 using Infrastructure.Identity;
 using Infrastructure.Persistence;
@@ -9,8 +11,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices

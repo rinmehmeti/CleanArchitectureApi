@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Application.Common.Mappings;
+﻿using Application.Common.Mappings;
+using AutoMapper;
 using Domain.Entities;
 
 namespace Application.TodoLists.Queries.GetTodos;

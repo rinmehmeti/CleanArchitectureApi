@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using Application.Common.Security;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

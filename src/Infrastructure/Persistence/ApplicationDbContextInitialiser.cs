@@ -35,7 +35,7 @@ public class ApplicationDbContextInitialiser
             throw;
         }
     }
-    
+
     public async Task SeedAsync()
     {
         try

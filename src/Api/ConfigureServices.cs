@@ -1,9 +1,9 @@
-﻿using Application.Common.Interfaces;
+﻿using Api.Services;
+using Application.Common.Interfaces;
 using Infrastructure.Persistence;
-using Api.Services;
 using Microsoft.AspNetCore.Mvc;
-using NSwag.Generation.Processors.Security;
 using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
