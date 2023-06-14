@@ -20,7 +20,7 @@ Get started by installing the [.NET template](https://www.nuget.org/packages/Cle
 1. Install the latest [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 2. Run `dotnet new install Clean.Architecture.Solution.Template` to install the .NET template
 3. Create a folder for your solution and cd into it (the template will use it as project name)
-4. Run `dotnet new ca-sln` to create a new project
+4. Run `dotnet new ca-api` to create a new project
 
 ## Database Configuration:
 By default solution is configured to use an in-memory database by default. This ensures that all users will be able to run the solution without needing to set up additional infrastructure (e.g. SQL Server).
