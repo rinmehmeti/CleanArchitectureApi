@@ -1,5 +1,13 @@
 # Clean Architecture (.NET 7, CQRS, MediatR)
 
+#### Description:
+This template is based on https://github.com/jasontaylordev/CleanArchitecture with a few changes.
+
+- Template includes only the backend API - thde default Angular frontend has been removed so you can use any client of your choice.
+- IdentityServer has been replaced with a simple JWT token auth.
+- Supporting classes such as Validators, EventHandlers have been moved in the same file with the relevant command/query. This makes it easier to navigate through specific features of the system since you don't have to open multiple files to find out what's going on. The only bits that have't moved are the domain layer entities.
+- IdentityService class has been expanded and now has extra authorization methods.
+
 #### Database Configuration:
 By default solution is configured to use an in-memory database by default. This ensures that all users will be able to run the solution without needing to set up additional infrastructure (e.g. SQL Server).
 
