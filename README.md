@@ -18,7 +18,7 @@ Changes from the original template:
 Get started by installing the [.NET template](https://www.nuget.org/packages/Clean.Architecture.Solution.Template) and run `dotnet new ca-api`:
 
 1. Install the latest [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
-2. Run `dotnet new install Clean.Architecture.Solution.Template` to install the .NET template
+2. Run `dotnet new install Clean.Architecture.Api` to install the .NET template
 3. Create a folder for your solution and cd into it (the template will use it as project name)
 4. Run `dotnet new ca-api` to create a new project
 
