@@ -5,7 +5,8 @@ using Application.Common.Security;
 using MediatR;
 
 namespace Application.Common.Behaviours;
-public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+
+public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly IIdentityService _identityService;

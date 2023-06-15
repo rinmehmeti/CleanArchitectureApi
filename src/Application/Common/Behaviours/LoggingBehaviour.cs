@@ -3,6 +3,7 @@ using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Common.Behaviours;
+
 public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {
     private readonly ILogger _logger;
@@ -20,14 +21,15 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
     {
         var requestName = typeof(TRequest).Name;
         var userId = _currentUserService.UserId ?? string.Empty;
-        string userName = string.Empty;
+        string? userName = string.Empty;
 
         if (!string.IsNullOrEmpty(userId))
         {
             userName = await _identityService.GetUserNameAsync(userId);
         }
 
-        _logger.LogInformation("Api Request: {Name} {@UserId} {@UserName} {@Request}",
+        _logger.LogInformation("CleanArchitecture Request: {Name} {@UserId} {@UserName} {@Request}",
             requestName, userId, userName, request);
     }
 }
+
